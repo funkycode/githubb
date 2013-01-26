@@ -1,10 +1,16 @@
- #include <QSettings>
-#include "keys.cpp"
+#ifndef SETTINGS_HPP_
+#define SETTINGS_HPP_
 
-class Settings : public QObject
-{
+#include <QObject>
+#include <QString>
+#include <QSettings>
+#include <QDebug>
+#include <keys.cpp>
+
+class Settings : public QObject {
+Q_OBJECT
 public:
-	Settings();
+	Settings(QObject *parent = 0);
 	QString getAuthID();
 	QString getAuthToken();
 	QString getUsername();
@@ -16,7 +22,9 @@ public:
 	void setAuthID(QString auth_id);
 public slots:
 private:
-    QSettings* m_settings;
+    QSettings* m_sets;
 private slots:
 
 };
+
+#endif /* SETTINGS_HPP_ */

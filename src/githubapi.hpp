@@ -30,8 +30,8 @@ class GitHubApi : public QObject {
 	Q_OBJECT
 public:
 
-	void checkToken();
-	void requestToken();
+	Q_INVOKABLE void checkToken();
+	Q_INVOKABLE void requestToken();
 	GitHubApi(Settings *settings);
 
 public slots:
