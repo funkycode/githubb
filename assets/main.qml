@@ -1,43 +1,39 @@
-// Default empty project template
 import bb.cascades 1.0
 
-// creates one page with a label
-Page {
-    Container {
-        layout: StackLayout {
-                    
-                }
-        Label {
-            text: qsTr("Hello World")
-            textStyle.base: SystemDefaults.TextStyles.BigText
-            verticalAlignment: VerticalAlignment.Center
-            horizontalAlignment: HorizontalAlignment.Center
+TabbedPane {
+     id : mainPage
+    showTabsOnActionBar: true
+    
+ 
+    
+    Tab {
+        title: qsTr("Events")
+       // imageSource: "asset:///images/upload-tab.png"
+        
+        EventsTab {
+            id: eventsTab
         }
-        TextField {
-            id:username
-        }
-         TextField {
-                    id:password
-                }
+       
+    }
+        Tab {
+                title: qsTr("Me")
+             //   imageSource: "asset:///images/about-tab.png"
                 
-                Button{
-                    id: saveUser
-                    text:"save"
-                    onClicked: {
-                        
-                        sets.setUsername(username.text);
-                        sets.setPassword(password.text);
-                      }
+                AboutMeTab {
+                    id: aboutMeTab
                 }
-                 Button{
-                                    id: request
-                                    text:"check"
-                                    onClicked: {
-                                        
-                                        githubapi.checkToken();
-                                       
-                                      }
-                                }
+            }
+     
+   
+       
+    
+    onCreationCompleted: {
+        // this slot is called when declarative scene is created
+        // write post creation initialization here
+        console.log("TabbedPane - onCreationCompleted()")
+
+        // enable layout to adapt to the device rotation
+        // don't forget to enable screen rotation in bar-bescriptor.xml (Application->Orientation->Auto-orient)
+        OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
     }
 }
-
